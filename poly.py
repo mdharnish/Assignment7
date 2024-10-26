@@ -180,12 +180,10 @@ class LinkedList:
     def __str__(self):
         terms_list = []
         current = self.head
-
-        if current is None:
-            return ""
-
+        
         while current is not None:
             terms_list.append(f"({current.coeff}, {current.exp})")
+            current = current.next
         
         return "+".join(terms_list)
 
