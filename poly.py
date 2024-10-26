@@ -120,7 +120,7 @@ class LinkedList:
         if self.head is None or new_node.exp > self.head.exp:
             new_node.next = self.head
             self.head = new_node
-            inserted = True
+            return
         
         current = self.head
 
@@ -140,7 +140,7 @@ class LinkedList:
         if not inserted:
             current.next = new_node
         
-        while self.head is not None and self.head.coeff == 0:
+        if self.head is not None and self.head.coeff == 0:
             self.head = self.head.next 
 
 
