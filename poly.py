@@ -185,7 +185,7 @@ class LinkedList:
             terms_list.append(f"({current.coeff}, {current.exp})")
             current = current.next
         
-        return "+".join(terms_list)
+        return " + ".join(terms_list)
 
 
 def main():
