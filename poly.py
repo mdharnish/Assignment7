@@ -139,7 +139,9 @@ class LinkedList:
         
         if not inserted:
             current.next = new_node
-                
+        
+        while self.head is not None and self.head.coeff == 0:
+            self.head = self.head.next 
 
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
