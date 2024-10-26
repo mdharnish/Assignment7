@@ -115,33 +115,24 @@ class LinkedList:
             return
         
         new_node = Node(coeff, exp)
-        inserted = False
 
-        if self.head is None or new_node.exp > self.head.exp:
+        if self.head is None or exp > self.head.exp:
             new_node.next = self.head
             self.head = new_node
             return
         
         current = self.head
 
-        while current.next is not None and not inserted:
-            if current.next.exp > new_node.exp:
-                current = current.next
-            elif current.next.exp == new_node.exp:
-                current.next.coeff += new_node.coeff
-                if current.next.coeff == 0:
-                    current.next = current.next.next
-                inserted = True
-            else:
-                new_node.next = current.next
-                current.next = new_node
-                inserted = True
-        
-        if not inserted:
+        while current.next is not None and current.next.exp > exp:
+            current = current.next
+
+        if current.next is not None and current.next.exp == exp:
+            current.next.coeff += coeff
+            if current.next.coeff == 0:
+                current.next = current.next.next
+        else:
+            new_node.next = current.next
             current.next = new_node
-        
-        if self.head is not None and self.head.coeff == 0:
-            self.head = self.head.next 
 
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
