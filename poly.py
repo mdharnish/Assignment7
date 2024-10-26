@@ -128,10 +128,9 @@ class LinkedList:
             if current.next.exp > new_node.exp:
                 current = current.next
             elif current.next.exp == new_node.exp:
-                if current.next.coeff + new_node.coeff == 0:
+                current.next.coeff += new_node.coeff
+                if current.next.coeff == 0:
                     current.next = current.next.next
-                else:
-                    current.next.coeff += new_node.coeff
                 inserted = True
             else:
                 new_node.next = current.next
