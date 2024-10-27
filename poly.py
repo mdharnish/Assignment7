@@ -120,14 +120,13 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
             return
-        
-        current = self.head
-
-        if current.exp == exp:
-            current.coeff += coeff
-            if current.coeff == 0:
-                self.head = current.next
+        elif self.head.exp == exp:
+            self.head.coeff += coeff
+            if self.head.coeff == 0:
+                self.head = self.head.next
             return
+
+        current = self.head
 
         while current.next is not None and current.next.exp > exp:
             current = current.next
