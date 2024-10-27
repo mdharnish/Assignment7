@@ -123,6 +123,12 @@ class LinkedList:
         
         current = self.head
 
+        if current.exp == exp:
+            current.coeff += coeff
+            if current.coeff == 0:
+                self.head = current.next
+            return
+
         while current.next is not None and current.next.exp > exp:
             current = current.next
 
