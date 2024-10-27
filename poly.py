@@ -196,12 +196,13 @@ def main():
     p = LinkedList()
 
     n = int(input())
-    for i in range(n + 1):
+    for i in range(n):
         coeff_exp = input().split()
         coeff = int(coeff_exp[0])
         exp = int(coeff_exp[1])
         p.insert_term(coeff, exp)
     q = LinkedList()
+    input()
     m = int(input())
     for j in range(m):
         coeff_exp = input().split()
