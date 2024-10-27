@@ -96,6 +96,9 @@ class Node:
 
 
 class LinkedList:
+    """
+    This LinkedList class is designed to represent various polynomials.
+    """
     def __init__(self):
         # You are also welcome to use a sentinel/dummy node!
         # It is definitely recommended, which will we learn more
@@ -111,16 +114,22 @@ class LinkedList:
     # If a term with that exponent already exists, add the coefficients together.
     # You must keep the terms in descending order by exponent.
     def insert_term(self, coeff, exp):
+        """
+        Inserts the term with the coefficient coeff and exponent 
+        exp into the polynomial. If the coefficient is 0, does nothing. 
+        If a term with that exponent already exists, adds the coefficients 
+        together, potentially removing the exponent if the summed coefficient is 0.
+        Terms are kept in descending order by exponent.
+        """
         if coeff == 0:
             return
-        
         new_node = Node(coeff, exp)
 
         if self.head is None or exp > self.head.exp:
             new_node.next = self.head
             self.head = new_node
             return
-        elif self.head.exp == exp:
+        if self.head.exp == exp:
             self.head.coeff += coeff
             if self.head.coeff == 0:
                 self.head = self.head.next
@@ -142,6 +151,10 @@ class LinkedList:
 
     # Add a polynomial p to the polynomial and return the resulting polynomial as a new linked list.
     def add(self, p):
+        """
+        Adds a polynomial p to the current polynomial and returns 
+        the resulting polynomial as a new linked list.
+        """
         poly_sum = LinkedList()
 
         current = self.head
@@ -153,11 +166,14 @@ class LinkedList:
         while current is not None:
             poly_sum.insert_term(current.coeff, current.exp)
             current = current.next
-        
         return poly_sum
 
     # Multiply a polynomial p with the polynomial and return the product as a new linked list.
     def mult(self, p):
+        """
+        Multiplies a polynomial p with the current polynomial and 
+        returns the product as a new linked list.
+        """
         poly_product = LinkedList()
 
         current_first_poly = self.head
@@ -170,22 +186,25 @@ class LinkedList:
                 poly_product.insert_term(coeff_product, exp_sum)
                 current_second_poly = current_second_poly.next
             current_first_poly = current_first_poly.next
-        
         return poly_product
 
     # Return a string representation of the polynomial.
     def __str__(self):
         terms_list = []
         current = self.head
-        
         while current is not None:
             terms_list.append(f"({current.coeff}, {current.exp})")
             current = current.next
-        
         return " + ".join(terms_list)
 
 
 def main():
+    """
+    Reads data from stdin using input() and creates polynomial p,
+    reads data from stdin using input() and creates polynomial q,
+    gets sum of p and q as a new linked list and prints sum,
+    gets product of p and q as a new linked list and prints product.
+    """
     # read data from stdin using input() and create polynomial p
 
     # read data from stdin using input() and create polynomial q
@@ -196,7 +215,7 @@ def main():
     p = LinkedList()
 
     n = int(input())
-    for i in range(n):
+    for _ in range(n):
         coeff_exp = input().split()
         coeff = int(coeff_exp[0])
         exp = int(coeff_exp[1])
@@ -204,7 +223,7 @@ def main():
     q = LinkedList()
     input()
     m = int(input())
-    for j in range(m):
+    for _ in range(m):
         coeff_exp = input().split()
         coeff = int(coeff_exp[0])
         exp = int(coeff_exp[1])
