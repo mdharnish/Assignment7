@@ -193,26 +193,21 @@ def main():
     # get sum of p and q as a new linked list and print sum
 
     # get product of p and q as a new linked list and print product
-    import sys
-    input = sys.stdin.read
-    data = input().strip().splitlines()
-    
     p = LinkedList()
-    n = int(data[0])
-    for i in range(1, n + 1):
-        coeff_exp = data[i].split()
+
+    n = int(input())
+    for i in range(n + 1):
+        coeff_exp = input().split()
         coeff = int(coeff_exp[0])
         exp = int(coeff_exp[1])
         p.insert_term(coeff, exp)
-    
     q = LinkedList()
-    m = int(data[n + 2])
-    for j in range(n + 3, n + 3 + m):
-        coeff_exp = data[j].split()
+    m = int(input())
+    for j in range(m):
+        coeff_exp = input().split()
         coeff = int(coeff_exp[0])
         exp = int(coeff_exp[1])
         q.insert_term(coeff, exp)
-    
     print(p.add(q))
     print(p.mult(q))
 
